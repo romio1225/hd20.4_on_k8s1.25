@@ -1,0 +1,141 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: kfserving-system/serving-cert
+    meta.helm.sh/release-name: kfserving
+    meta.helm.sh/release-namespace: kfserving-system
+  creationTimestamp: "2022-11-07T02:17:14Z"
+  generation: 5
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  managedFields:
+  - apiVersion: admissionregistration.k8s.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:cert-manager.io/inject-ca-from: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/managed-by: {}
+      f:webhooks:
+        .: {}
+        k:{"name":"inferenceservice.kfserving-webhook-server.v1beta1.validator"}:
+          .: {}
+          f:admissionReviewVersions: {}
+          f:clientConfig:
+            .: {}
+            f:service:
+              .: {}
+              f:name: {}
+              f:namespace: {}
+              f:path: {}
+              f:port: {}
+          f:failurePolicy: {}
+          f:matchPolicy: {}
+          f:name: {}
+          f:namespaceSelector: {}
+          f:objectSelector: {}
+          f:rules: {}
+          f:sideEffects: {}
+          f:timeoutSeconds: {}
+        k:{"name":"inferenceservice.kfserving-webhook-server.validator"}:
+          .: {}
+          f:admissionReviewVersions: {}
+          f:clientConfig:
+            .: {}
+            f:service:
+              .: {}
+              f:name: {}
+              f:namespace: {}
+              f:path: {}
+              f:port: {}
+          f:failurePolicy: {}
+          f:matchPolicy: {}
+          f:name: {}
+          f:namespaceSelector: {}
+          f:objectSelector: {}
+          f:rules: {}
+          f:sideEffects: {}
+          f:timeoutSeconds: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2022-11-07T02:17:14Z"
+  - apiVersion: admissionregistration.k8s.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:webhooks:
+        k:{"name":"inferenceservice.kfserving-webhook-server.v1beta1.validator"}:
+          f:clientConfig:
+            f:caBundle: {}
+        k:{"name":"inferenceservice.kfserving-webhook-server.validator"}:
+          f:clientConfig:
+            f:caBundle: {}
+    manager: cainjector
+    operation: Update
+    time: "2023-04-22T06:49:26Z"
+  name: inferenceservice.serving.kubeflow.org
+  resourceVersion: "371076066"
+  selfLink: /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/inferenceservice.serving.kubeflow.org
+  uid: becf7191-06ae-45b9-bd2a-dc2ee1359f05
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURiRENDQWxTZ0F3SUJBZ0lRZGdwVmx5SzN4MG1zeUJDSVh0THl6akFOQmdrcWhraUc5dzBCQVFzRkFEQkEKTVQ0d1BBWURWUVFERXpWclpuTmxjblpwYm1jdGQyVmlhRzl2YXkxelpYSjJaWEl0YzJWeWRtbGpaUzVyWm5ObApjblpwYm1jdGMzbHpkR1Z0TG5OMll6QWVGdzB5TXpBME1qSXdOalE1TWpaYUZ3MHlNekEzTWpFd05qUTVNalphCk1FQXhQakE4QmdOVkJBTVROV3RtYzJWeWRtbHVaeTEzWldKb2IyOXJMWE5sY25abGNpMXpaWEoyYVdObExtdG0KYzJWeWRtbHVaeTF6ZVhOMFpXMHVjM1pqTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQwpBUUVBcWN1aERqUGxOZUI2ZzgreVROaHNIaE1rN3ZxblhDZWkwSncxdFFUd1ZtdDlsWEtNRUEwWW9lMjZvSzd6CjR3Wm9pay9RaWpEdTYxbjBmS1RLT1Brc3lTd25sekNJVVQ2cU5Wc3hnYnZMVVNTaEdZeTJVVm5oaWIxc1Zhc28KQmN4MzBteDhHQVdCNmNtaTFscG45QjdWMnFHbkRvTytqNzRWQUNQdlhTTDBWV0VLUkphZ0N2R3FXa2lyTTFPWApKOGs4V1A5UTBSeERDSVBrY0RZT0lNQzV3a3hUTXFqMVpBR3NxNnBzTDRsYUo3UVE2SC9BN21HbXdkZEtUZXdxCjRVa3BxME8wWnJONGNISkVXZnMySG5PZjRRNHpmZW5sZmtZNTNza0tVM0h3cWxqWVdUa25Xc3lTMDQ0TEFRSGkKMmdBZmV6TldXUDV4bXNQNllnK0QxY0lWaXdJREFRQUJvMkl3WURBT0JnTlZIUThCQWY4RUJBTUNCYUF3REFZRApWUjBUQVFIL0JBSXdBREJBQmdOVkhSRUVPVEEzZ2pWclpuTmxjblpwYm1jdGQyVmlhRzl2YXkxelpYSjJaWEl0CmMyVnlkbWxqWlM1clpuTmxjblpwYm1jdGMzbHpkR1Z0TG5OMll6QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUEKVzFtWkMyT0dvWUovTVRjMlZKRStVZ1hNNUVoTytFeTNTeTRsZnhybmt4ZlRBOWdtSUwwakNQNDUwUmdQOUU3Qwo2WXRCdlQwUnZHeHd1dTBKMVVybHVHcnd0clRyaEUveE9taUFDWWRoaVNxQXpJaStZb3R0RjljNW5aSU1TMUJkCitHbDlkUURjTm5BTVJaQmVkUDBjOFoxQU4zRDYwQ3MvaWpRaXBCRlZJY3FLUFE0ejMvV21nUXoxcHVBZUJOdi8KRFFlUEQxck1ZWHRDek9UUkxJOUVMb0gxWEwwS2pyeHhWZUlVRzNaMDJLaEkrOXI2RHdQSzJVZmZCcEZ6RWp6YgpkenlRdXpjQzh0N1ZidkdadVdoWWRaK1dsL2lOYWJmSFo2cVUzS2c0MTR5Q2QzbHdHcXFiTVdKWkoxTStxOHRMCllud1RWclVXenlEUHNETDBjMmo4Q1E9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    service:
+      name: kfserving-webhook-server-service
+      namespace: kfserving-system
+      path: /validate-serving-kubeflow-org-v1alpha2-inferenceservice
+      port: 443
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: inferenceservice.kfserving-webhook-server.validator
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - serving.kubeflow.org
+    apiVersions:
+    - v1alpha2
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - inferenceservices
+    scope: '*'
+  #sideEffects: Unknown
+  sideEffects: None
+  timeoutSeconds: 30
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURiRENDQWxTZ0F3SUJBZ0lRZGdwVmx5SzN4MG1zeUJDSVh0THl6akFOQmdrcWhraUc5dzBCQVFzRkFEQkEKTVQ0d1BBWURWUVFERXpWclpuTmxjblpwYm1jdGQyVmlhRzl2YXkxelpYSjJaWEl0YzJWeWRtbGpaUzVyWm5ObApjblpwYm1jdGMzbHpkR1Z0TG5OMll6QWVGdzB5TXpBME1qSXdOalE1TWpaYUZ3MHlNekEzTWpFd05qUTVNalphCk1FQXhQakE4QmdOVkJBTVROV3RtYzJWeWRtbHVaeTEzWldKb2IyOXJMWE5sY25abGNpMXpaWEoyYVdObExtdG0KYzJWeWRtbHVaeTF6ZVhOMFpXMHVjM1pqTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQwpBUUVBcWN1aERqUGxOZUI2ZzgreVROaHNIaE1rN3ZxblhDZWkwSncxdFFUd1ZtdDlsWEtNRUEwWW9lMjZvSzd6CjR3Wm9pay9RaWpEdTYxbjBmS1RLT1Brc3lTd25sekNJVVQ2cU5Wc3hnYnZMVVNTaEdZeTJVVm5oaWIxc1Zhc28KQmN4MzBteDhHQVdCNmNtaTFscG45QjdWMnFHbkRvTytqNzRWQUNQdlhTTDBWV0VLUkphZ0N2R3FXa2lyTTFPWApKOGs4V1A5UTBSeERDSVBrY0RZT0lNQzV3a3hUTXFqMVpBR3NxNnBzTDRsYUo3UVE2SC9BN21HbXdkZEtUZXdxCjRVa3BxME8wWnJONGNISkVXZnMySG5PZjRRNHpmZW5sZmtZNTNza0tVM0h3cWxqWVdUa25Xc3lTMDQ0TEFRSGkKMmdBZmV6TldXUDV4bXNQNllnK0QxY0lWaXdJREFRQUJvMkl3WURBT0JnTlZIUThCQWY4RUJBTUNCYUF3REFZRApWUjBUQVFIL0JBSXdBREJBQmdOVkhSRUVPVEEzZ2pWclpuTmxjblpwYm1jdGQyVmlhRzl2YXkxelpYSjJaWEl0CmMyVnlkbWxqWlM1clpuTmxjblpwYm1jdGMzbHpkR1Z0TG5OMll6QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUEKVzFtWkMyT0dvWUovTVRjMlZKRStVZ1hNNUVoTytFeTNTeTRsZnhybmt4ZlRBOWdtSUwwakNQNDUwUmdQOUU3Qwo2WXRCdlQwUnZHeHd1dTBKMVVybHVHcnd0clRyaEUveE9taUFDWWRoaVNxQXpJaStZb3R0RjljNW5aSU1TMUJkCitHbDlkUURjTm5BTVJaQmVkUDBjOFoxQU4zRDYwQ3MvaWpRaXBCRlZJY3FLUFE0ejMvV21nUXoxcHVBZUJOdi8KRFFlUEQxck1ZWHRDek9UUkxJOUVMb0gxWEwwS2pyeHhWZUlVRzNaMDJLaEkrOXI2RHdQSzJVZmZCcEZ6RWp6YgpkenlRdXpjQzh0N1ZidkdadVdoWWRaK1dsL2lOYWJmSFo2cVUzS2c0MTR5Q2QzbHdHcXFiTVdKWkoxTStxOHRMCllud1RWclVXenlEUHNETDBjMmo4Q1E9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    service:
+      name: kfserving-webhook-server-service
+      namespace: kfserving-system
+      path: /validate-serving-kubeflow-org-v1beta1-inferenceservice
+      port: 443
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: inferenceservice.kfserving-webhook-server.v1beta1.validator
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - serving.kubeflow.org
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - inferenceservices
+    scope: '*'
+  #sideEffects: Unknown
+  sideEffects: None
+  timeoutSeconds: 30

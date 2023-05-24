@@ -1,0 +1,16 @@
+modelsWebApp:
+  #image: 192.168.179.44:5000/kfserving/models-web-app:v0.6.0
+  image: kfserving/models-web-app:latest
+
+controller:
+  #image: 192.168.179.44:5000/kfserving/kfserving-controller:v0.6.0
+  image: kfserving/kfserving-controller:v0.6.1
+
+manager:
+  #image: 192.168.179.44:5000/kubebuilder/kube-rbac-proxy:v0.4.0
+  image: kubebuilder/kube-rbac-proxy:v0.4.0
+
+
+installOrder:
+  - namespace.yaml
+

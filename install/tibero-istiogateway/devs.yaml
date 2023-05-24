@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: my-headless-service-rule
+spec:
+  host: "tiberolocaldns.hyperdata.svc.cluster.local"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: my-headless-service-route
+spec:
+  hosts:
+  - "tiberolocaldns.hyperdata.svc.cluster.local"
+  tcp:
+  - route:
+    - destination:
+        host: "tiberolocaldns.hyperdata.svc.cluster.local"
+

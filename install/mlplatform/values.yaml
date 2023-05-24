@@ -1,0 +1,93 @@
+registry:
+  address: 192.168.179.44:5000
+  # imagePullSecret이 존재하지 않을 경우, knaive-serving은 동작하지 않는다.
+  secret: mlplatform-backend-secret
+
+ingressClassName: "nginx"
+
+hyperdata:
+  address: http://hyperdata-svc-hd:8080
+
+
+proauth:
+  address: http://hyperdata-lb-hd:28080
+
+kubernetes:
+  istio:
+    ingressgateway:
+      #ip: 192.168.173.83
+      ip: 192.168.173.61
+      #port: 31380
+      port: 80
+      namespace: istio-system
+      service:
+        name: istio-ingressgateway
+
+
+backend:
+  image:
+    name: hyperdata20.4.1.0.0_mlplatform_backend
+    tag: 20221216_v1
+    imagePullPolicy: Always
+  resources:
+    requests:
+      cpu: 1.3
+      memory: 2G
+    limits:
+      cpu: 1.3
+      memory: 2G
+  volume:
+    #storageClass: ceph-filesystem
+    storageClass: nfs-client
+    size: 10Gi
+    mountPath: /mlplatform
+  #private: false  
+  private: true
+
+frontend:
+  image:
+    name: hyperdata20.4.1.0.0_mlplatform_frontend
+    tag: 20221216_v1
+    imagePullPolicy: Always
+  service:
+    type: ClusterIP
+    nodePort: ""
+  resources:
+    requests:
+      cpu: 700m
+      memory: 2G
+    limits:
+      cpu: 700m
+      memory: 2G
+
+models:
+  recommendation:
+    image:
+      name: hyperdata20.4.1.0.0_mlplatform_recommendation
+      tag: 20221216_v1
+      imagePullPolicy: Always
+
+automl:
+  image:
+    name: hyperdata20.4.1.0.0_mlplatform_automl
+    tag: 20221216_v1
+    #name: automl_test
+    #tag: latest
+
+mllab:
+  image:
+    tensorflow1:
+      name: hyperdata20.4.1.0.0_mlplatform_notebook_tf_v1.15.2
+      tag: 20221216_v1
+      #name: mlplatform_notebook_tf_v1.15.2
+      #tag: 20211020_v1
+    tensorflow2:
+      name: hyperdata20.4.1.0.0_mlplatform_notebook_tf_v2.1.0
+      tag: 20221216_v1
+    pytorch:
+      name: hyperdata20.4.1.0.0_mlplatform_notebook_torch_v1.6.0
+      tag: 20221216_v1
+    statisticAnalysis:
+      name: hyperdata20.4.1.0.0_mlplatform_notebook_statistic_analysis_1.1.0
+      tag: 20221216_v1
+    

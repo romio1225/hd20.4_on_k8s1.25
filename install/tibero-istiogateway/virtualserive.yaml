@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: my-service-vs
+spec:
+  hosts:
+  - "192.168.173.59"
+  tls:
+  #- match:
+  #  - uri:
+  #      prefix: /hyperdata/hd-auth/Authenticate
+  - match:
+    - port: 443
+    route:
+    - destination:
+        host: "192.168.173.59" # 다시 192.168.173.59로 라우팅합니다.
+        port:
+          number: 443
+

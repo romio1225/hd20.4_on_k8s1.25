@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: ratings
+  #namespace: prod-us1
+spec:
+  workloadSelector:
+    labels:
+      #app: ratings
+      app.kubernetes.io/component: controller
+  ingress:
+  - port:
+      number: 443
+      protocol: HTTPS
+      name: somename
+    #defaultEndpoint: unix:///var/run/someuds.sock
+    defaultEndpoint: 127.0.0.1:8080
+    tls:
+      mode: SIMPLE
+      privateKey: "/etc/certs/privatekey.pem"
+      serverCertificate: "/etc/certs/servercert.pem"
+
