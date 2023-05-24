@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: disable-mtls-for-specific-pod
+  #namespace: <nginx_ingress_namespace>
+spec:
+  #selector:
+  #  matchLabels:
+  #    #app: <nginx_ingress_controller_label>
+  #    app.kubernetes.io/component: controller
+  #    app.kubernetes.io/name: ingress-nginx
+  mtls:
+    mode: DISABLE
+    #mode: PERMISSIVE
+    #mode: STRICT

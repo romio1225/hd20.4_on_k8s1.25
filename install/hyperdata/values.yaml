@@ -1,0 +1,106 @@
+image: 192.168.179.44:5000/hyperdata20.4.1.0.0_hd:20221216_v1
+
+version:
+  major: 20
+
+replicas: 1
+
+# ingressClassName필히 수정. neo4j, virtualilzation, hyperdata에 ingress rule yaml파일들이 있음.
+#ingressClassName: "hyperdata-nginx" 
+ingressClassName: "nginx" 
+
+https:
+  enabled: true
+
+proxy:
+  bodysize: 1024m
+  # minutes
+  timeout: 1800
+ 
+fqdn:
+  enabled: false
+  #enabled: true
+
+webserver:
+  #ip: 172.23.71.12
+  #ip: 192.168.173.55
+  ip: 192.168.220.110
+  fqdn: test.local
+  #port: 32499
+  port: 443
+  #port: 8080
+
+loadbalancer:
+  #enabled: false
+  enabled: true
+  SUPERVDB_UCS_PORT: 9994
+  
+neo4j:
+  ip: neo4j-hd-gdb:7687/bolt
+  password: tmax
+  username: neo4j
+
+ssvr5:
+  SSVR5_LISTENER_PORT:
+  SSVR5_JAVA_AGENT_PORT:
+
+db:
+  #address: 192.168.173.59
+  address: tiberolocaldns
+  #address: tiberolbdb
+  #address: tibero.tiberolocaldns.hyperdata.svc.cluster.local
+  port: 8629
+  persistentVolumeClaimName: tibero-pvc-db
+  mountPath: /db
+
+resources:
+  requests:
+    cpu: 2
+    memory: 12Gi
+  limits:
+    cpu: 2
+    memory: 12Gi
+  
+mlplatform:
+  ip: mlplatform-backend-svc
+  port: 18080
+
+customLogo:
+  enabled: false
+
+customAddon:
+  enabled: false
+  url: https://192.168.179.40:8080/java
+  path: /java
+  externalHost: 192.168.173.48
+  externalPort: 8090
+
+sqlEditor:
+  #enabled: true
+  enabled: false
+  web_studio_ip: 192.168.173.84  #${WEB STUDIO IP}
+  #web_studio_ip: null
+
+dataCollection:
+  enabled: false
+
+virtualization:
+  svc_name: hyperdata-virtualization-svc
+  port: 8500
+
+dbConnection:
+  useVdbOn: 
+  #아무것도 안적는게 false, 뭐라도 적으면 true로 되어있음.
+  #상세내용은 notion에 적음.
+  #ws_db_connection_vdb_on: false
+
+visualization:
+  #vis_access_key: WISE  # WISE는 위세제품연동, "" 가 기존 하이퍼데이터 연동
+  vis_access_key: ""
+  #vis_access_url: http://172.23.71.12:30301
+  #vis_access_url: https://hyperdata.catholic.kr:30022
+  #vis_access_url: https://hdbi.catholic.kr
+
+#jeuseHDserverMEM:
+  #hd_max_mem: 22528
+  #hd_min_mem: 22528

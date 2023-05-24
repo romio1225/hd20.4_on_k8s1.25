@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-gdb-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: {{ .Values.ingressClassName }}
+  tls:
+    - secretName: istio.hyperdata-nginx-ingress-nginx
+  rules:
+   - http:
+       paths:
+       - path: /neo4j(/|$)(.*)
+         pathType: Prefix
+         backend:
+           service:
+             name: {{ template "neo4j.fullname" . }}
+             port:
+               number: 7474
+

@@ -1,0 +1,9 @@
+image: 192.168.179.44:5000/hyperdata20.4.1.0.0_kca:20221216_v1
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 2Gi
+  limits:
+    cpu: 250m
+    memory: 2Gi

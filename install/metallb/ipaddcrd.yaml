@@ -1,0 +1,8 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: first-pool
+  #namespace: metallb-system #내가 메탈엘비설치할 네임스페이스
+spec:
+  addresses:
+  - 192.168.173.61-192.168.173.62

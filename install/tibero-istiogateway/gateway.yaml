@@ -1,0 +1,48 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: tibero-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 8629
+      name: tcp-tibero-gw
+      protocol: TCP
+    hosts:
+    - "*"
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: tibero-virtual-service
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - tibero-gateway
+  tcp:
+#  - match:
+#    - port: 31400
+#    route:
+#    - destination:
+#        host: tibero-lb-db.hyperdata.svc.cluster.local
+#        port:
+#          number: 8628
+  - match:
+    - port: 8629
+    route:
+    - destination:
+        host: tiberolbdb.hyperdata.svc.cluster.local
+        port:
+          number: 8629
+#  - match:
+#    - port: 31402
+#    route:
+#    - destination:
+#        host: tiberolocaldns.hyperdata.svc.cluster.local
+#        port:
+#          number: 8629
+

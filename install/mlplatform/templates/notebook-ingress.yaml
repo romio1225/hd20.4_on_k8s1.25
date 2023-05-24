@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mlplatform-notebook-ingress
+  #annotations:
+  #  kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: {{ .Values.ingressClassName }}
+  tls:
+    - secretName: istio.{{ .Release.Namespace }}-nginx-ingress-nginx
+  rules:
+    - http:
+        paths:
+          - path: /notebook
+            pathType: Prefix
+            backend:
+              service:
+                name: istio-ingress-gateway-external-svc
+                port:
+                  number: 80
+

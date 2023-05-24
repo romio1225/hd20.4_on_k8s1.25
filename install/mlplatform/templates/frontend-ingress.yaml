@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mlplatform-frontend-ingress
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /$2
+    #kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: {{ .Values.ingressClassName }}
+  tls:
+    - secretName: istio.{{ .Release.Namespace }}-nginx-ingress-nginx
+  rules:
+    - http:
+        paths:
+          - path: /mlplatform(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: mlplatform-frontend-svc
+                port:
+                  number: 80
+
